@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Administrador</title>
+        <link rel="icon" href="Imagenes/Diseño sin título2.svg">
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="Estilos/menu.css">
+        <link rel="stylesheet" href="Estilos/administrador.css">
+        <script type="text/JavaScript" src="JavaScript/validarLogin.js"></script>
+        <script type="text/JavaScript" src="JavaScript/administracion.js"></script>
+    </head>
+    <body>
+        <div class="menu">
+            <img src="Imagenes/hombre.png" alt="Foto Usuario" width="173px">
+            <h3>Administrador</h3>
+            <ul>
+                <li><a>Mi perfil</a></li>
+                <li><a href="crearUsuario.html">Crear usuario</a></li>
+                <li><a id="cerrarSesion" href="login.html">Cerrar sesión</a></li>
+            </ul>
+        </div>
+
+        <div class="barraSuperior">
+            <img src="Imagenes/Diseño sin título2.svg" alt="Logo" width="50px">
+        </div>
+
+        <div class="informacion">
+            <h2>Bienvenido</h2>
+            <p>
+                Acaba de ingresar al usuario de administrador.
+            </p>
+            
+                <table style="width:70%" class="tablaRegistros" id="tablaRegistros">
+                    <tbody id="tbody">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Usuario</th>
+                            <th>Genero</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </tbody>
+              </table>
+        </div>
+
+        <script>
+
+            function eliminar(element){
+                var nombre = localStorage.removeItem('Nombre' + element);
+                var apellido = localStorage.removeItem('Apellido' + element);
+                var genero = localStorage.removeItem('Genero' + element);
+                var usuario = localStorage.removeItem('Usuario' + element);
+                var contraseña = localStorage.removeItem('Clave' + element);
+                var tipoUsuario = localStorage.removeItem('Tipo Usuario' + element);
+
+                alert('Usuario eliminado con exito');
+                location.reload();
+
+            }
+
+            function editar(element){
+                var nombre = localStorage.getItem('Nombre' + element);
+                var apellido = localStorage.getItem('Apellido' + element);
+                var genero = localStorage.getItem('Genero' + element);
+                var usuario = localStorage.getItem('Usuario' + element);
+                var contraseña = localStorage.getItem('Clave' + element);
+                var tipoUsuario = localStorage.getItem('Tipo Usuario' + element);
+
+                localStorage.setItem('editarNombre', nombre);
+                localStorage.setItem('editarApellido', apellido);
+                localStorage.setItem('editarGenero', genero);
+                localStorage.setItem('editarUsuario', usuario);
+                localStorage.setItem('editarClave', contraseña);
+                localStorage.setItem('editarTipoUsuario', tipoUsuario);
+
+                window.location.href="editarUsuario.html";
+            }
+
+        </script>
+    </body>
+</html>

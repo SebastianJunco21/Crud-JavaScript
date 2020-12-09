@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Crear usuario</title>
+        <link rel="icon" href="Imagenes/Diseño sin título2.svg">
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="Estilos/menu.css">
+        <link rel="stylesheet" href="Estilos/crearUsuario.css">
+        <script type="text/JavaScript" src="JavaScript/validarLogin.js"></script>
+        <script type="text/JavaScript" src="JavaScript/crearUsuario.js"></script>
+    </head>
+    <body>
+        <div class="menu">
+            <img src="Imagenes/hombre.png" alt="Foto Usuario" width="173px">
+            <h3>Administrador</h3>
+            <ul>
+                <li><a href="administrador.html">Mi perfil</a></li>
+                <li><a id="cerrarSesion" href="login.html">Cerrar sesión</a></li>
+            </ul>
+        </div>
+
+        <div class="barraSuperior">
+            <a href="administrador.html"><img src="Imagenes/Diseño sin título2.svg" alt="Logo" width="50px"></a>
+        </div>
+
+        <div class="informacion">
+            <h2>Crear usuario</h2>
+            <form action="">
+                <div class="contenedorInfoBasi">
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" name="nombre" id="nombre" autocomplete="off"><br><br>
+
+                    <label for="apellido">Apellido:</label><br>
+                    <input type="text" name="apellido" id="apellido" autocomplete="off"><br><br>
+
+                    <label for="genero">Genero:</label><br>
+                    <select name="genero" id="genero">
+                        <option value="1">Masculino</option>
+                        <option value="2">Femenino</option>
+                    </select>
+                </div>
+                
+                <div class="contenedorCredencial">
+                    <label for="usuario">Usuario:</label><br>
+                    <input type="text" name="usuario" id="usuario" autocomplete="off"><br><br>
+
+                    <label for="clave">Contraseña:</label><br>
+                    <input type="text" name="clave" id="clave" autocomplete="off"><br><br>
+
+                    <label for="confirmarClave">Confirmar contraseña:</label><br>
+                    <input type="text" name="confirmarClave" id="confirmarClave" autocomplete="off"><br><br>
+                    
+                    <label for="tipoUsuario">Tipo de usuario:</label><br>
+                    <select name="tipoUsuario" id="tipoUsuario">
+                        <option value="1">Administrador</option>
+                        <option value="2">Usuario</option>
+                    </select><br><br>
+
+                    <div class="btnCrear" id="btnCrear">Crear</div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

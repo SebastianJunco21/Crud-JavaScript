@@ -1,0 +1,53 @@
+body{
+    font-family: verdana;
+    margin: 0;
+    overflow: hidden;
+}
+
+.menu{
+    float: left;
+    margin-right: 40px;
+    background: #4285f4;
+    border-right: 2px solid;
+    position: relative;
+    padding: 0 8px 25.5% 8px;
+}
+
+.menu ul{
+    padding-left: 0;
+}
+
+
+.menu li{
+    margin: 8px 12px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu li:hover{
+    border-bottom: 1px solid black;
+}
+
+.menu h3{
+    text-align: -webkit-center;
+}
+
+.barraSuperior{
+    background: #4285f4;
+    text-align: -webkit-center;
+    border-bottom: 2px solid black;
+}
+
+.barraSuperior img{
+    margin: 6px;
+    cursor: pointer;
+}
+
+.informacion{
+    margin-left: 20px;
+}

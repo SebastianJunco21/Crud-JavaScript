@@ -1,0 +1,32 @@
+.contenedorInfoBasi{
+    float: left;
+    margin-right: 150px;
+}
+
+.contenedorCredencial{
+    float: left;
+}
+
+input{
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 7px;
+    outline: none;
+}
+
+select{
+    padding: 4px 12px;
+    margin-top: 5px;
+    outline: none;
+}
+
+.btnCrear{
+    width: 100px;
+    font-size: 14px;
+    padding: 5px;
+    margin: 10px 0 20px 62px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid;
+    cursor: pointer;
+}

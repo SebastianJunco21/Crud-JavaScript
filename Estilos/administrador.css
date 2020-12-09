@@ -1,0 +1,21 @@
+/* .tablaRegistros{
+    border-spacing: 0;
+
+} */
+
+.tablaRegistros tr th{
+    border: 2px solid black;
+
+}
+
+.tablaRegistros tr td{
+    border: 2px solid black;
+    text-align-last: center;
+
+}
+
+.tablaRegistros tr td img{
+    width: 40px;
+    cursor: pointer;
+
+}
