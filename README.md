@@ -1,7 +1,7 @@
 # Crud-JavaScript
 Este es un crud creado únicamente bajo las tecnologías de HTML5, CSS3 y javaScript
 
-Este es un proyecto que no utiliza ningun compilador diferente al de mismo navegador.
+Este es un proyecto que no utiliza ningun compilador diferente al del mismo navegador, no utiliza frameworks o herramientas diferentes a las ya mencionadas.
 
 Este codigo es capaz de guardar, seleccionar, editar y eliminar registros, haciendo uso del localStorage (cache del navegador) como lugar de almacenamiento. 
 
