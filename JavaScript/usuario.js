@@ -16,4 +16,4 @@ function validarTipoUsuario(){
     }
 }
 
-validarTipoUsuario();
+validarTipoUsuario(); 
