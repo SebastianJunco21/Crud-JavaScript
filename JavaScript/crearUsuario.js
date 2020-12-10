@@ -1,5 +1,23 @@
 'use strict'
 
+// Valida con que tipo de usuario se encuentra logueado, para enviarlo al login si el tipo de usuario
+// no coincide con Administrador o usuario, o redirigirlo a la vista de usuario si se encuentra
+// logueado con ese tipo de usuario.
+function validarTipoUsuario(){
+    const tipoUsuario = localStorage.getItem('loginTipoUsuario');
+    
+    if(tipoUsuario == null || tipoUsuario == ''){
+        window.location.href="login.html";
+        alert('Por favor inície sesion nuevamente');
+
+    }else if(tipoUsuario == "Usuario"){
+        window.location.href="usuario.html";
+
+    }
+}
+
+validarTipoUsuario();
+
 window.addEventListener('load', function(){
 
     var nombre = document.getElementById('nombre');
