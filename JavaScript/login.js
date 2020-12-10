@@ -1,5 +1,7 @@
 'use strict'
 
+// Carga los 2 primeros usuarios en el localStorage (administrador - usuario) por defecto por 
+// si es la primera ves que se habre esta pagina en ese navegador.
 function usuarioPredeterminado(){
         localStorage.setItem('Clave1', 'lider123');
         localStorage.setItem('Usuario1', 'lider123');
@@ -20,18 +22,23 @@ usuarioPredeterminado();
 
 window.addEventListener('load', function(){
 
+    // Se encargada de obtener los campos de usuario y conraseña, para enviarlos como parametro
+    // al metodo validarDatos cuando el usuaro presione enter o de click en el boton de enviar
     function login(){
         const inputUsuario = document.getElementById('usuario');
         const inputContraseña = document.getElementById('contraseña');
         const btnIngresar = document.getElementById('btnIngresar');
 
         btnIngresar.addEventListener('click', function(){
-            
+            event.preventDefault();
             validarDatos(inputUsuario, inputContraseña);
-            
+
         });
     }
 
+    // Recibe los datos que llegan del metodo login.
+    // Valida que el usuario y la contraseña se encuantre en el localStorage y redirecciona al usuario
+    // ya sea hacia la vista administrador, o hacia la vista usuario
     function validarDatos(inputUsuario, inputContraseña){
         var primerContador = 0;
         var segundoContador = 0;
@@ -63,12 +70,17 @@ window.addEventListener('load', function(){
         }
     }
 
+    // Recibe como parametro el identificador del usuario con el que se encuantra en el localStorage
+    // y almacena ese dato con la palabra clave login, para identificar en que momento un usuario se encuentra
+    // logueado. Almacena el usuario, la contraseña y el tipo de usuario
     function almacenarLogin(identificador){
-        var getUser = localStorage.getItem('Usuario' + identificador);
-        var getPassword = localStorage.getItem('Clave' + identificador);
+        const getUser = localStorage.getItem('Usuario' + identificador);
+        const getPassword = localStorage.getItem('Clave' + identificador);
+        const getTipoUsuario = localStorage.getItem('Tipo Usuario' + identificador);
 
         localStorage.setItem('loginUsuario', getUser);
         localStorage.setItem('loginClave', getPassword);
+        localStorage.setItem('loginTipoUsuario', getTipoUsuario);
     }
 
     login();

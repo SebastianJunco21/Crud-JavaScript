@@ -1,7 +1,27 @@
 'use strict'
 
+// Valida con que tipo de usuario se encuentra logueado, para enviarlo al login si el tipo de usuario
+// no coincide con Administrador o usuario, o redirigirlo a la vista de usuario si se encuentra
+// logueado con ese tipo de usuario.
+function validarTipoUsuario(){
+    const tipoUsuario = localStorage.getItem('loginTipoUsuario');
+    
+    if(tipoUsuario == null || tipoUsuario == ''){
+        window.location.href="login.html";
+        alert('Por favor inície sesion nuevamente');
+
+    }else if(tipoUsuario == "Usuario"){
+        window.location.href="usuario.html";
+
+    }
+}
+
+validarTipoUsuario();
+
 window.addEventListener('load', function(){
 
+    // determina la cantidad de usuario que se encuentran registrados en el localStorage para seleccionar
+    // la informacion necesaria y rellenar la tabla de la vista de administracion
     function añadirTextoTabla(){
         var contador = 0;
         do{
@@ -30,6 +50,8 @@ window.addEventListener('load', function(){
         }
     }
 
+    // Recibe como parametro el nombre, apellido, usuario, genero y la hilera (etiqueta tr) para añadir
+    // a la tabla dicha información
     function GenerarTextoTabla(nombre, apellido, usuario, genero, hilera){
         var celda = document.createElement("td");
         celda.prepend(nombre);
@@ -49,6 +71,9 @@ window.addEventListener('load', function(){
 
     }
 
+    // Recibe como parametro el la hilera (etiqueta tr) y el identificador de dicho usuario para añadir
+    // a la tabla la imagen de editar y crear, asignandolesel atribut onclick con el parametro editar
+    // mas el identificador para poder identificar que boton corresponde a que usuario.
     function generarImgTabla(hilera, name){
         var celda = document.createElement("td");
         var etiquetaEditar = document.createElement("img");

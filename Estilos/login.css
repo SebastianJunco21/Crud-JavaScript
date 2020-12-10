@@ -42,8 +42,8 @@ input{
     width: 100px;
     font-size: 14px;
     padding: 5px;
-    margin: 10px 0 20px 62px;
     border-radius: 4px;
     border: 1px solid;
     cursor: pointer;
+    background: transparent;
 }
