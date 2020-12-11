@@ -20,15 +20,18 @@ validarTipoUsuario();
 
 window.addEventListener('load', function(){
 
-    var nombre = document.getElementById('nombre');
-    var apellido = document.getElementById('apellido');
-    var usuario = document.getElementById('usuario');
-    var dropdawngene = document.getElementById('genero');
-    var dropdawnTipoU = document.getElementById('tipoUsuario');
-    var clave = document.getElementById('clave');
-    var confirmarClave = document.getElementById('confirmarClave');
+    let nombre = document.getElementById('nombre');
+    let apellido = document.getElementById('apellido');
+    let usuario = document.getElementById('usuario');
+    let dropdawngene = document.getElementById('genero');
+    let dropdawnTipoU = document.getElementById('tipoUsuario');
+    let clave = document.getElementById('clave');
+    let confirmarClave = document.getElementById('confirmarClave');
     const btnCrear = document.getElementById('btnCrear');
 
+    // identifica la informacion que el usuario añadio en los dropdown y valida la informacion que el usuario ingreso
+    // para posteriormente enviarle los datos del usuario al metodo agregarRegistro para que este lo añada en el
+    // localSrotage
     btnCrear.addEventListener('click', function(){
         switch(dropdawngene.value){
             case '1':
@@ -60,6 +63,7 @@ window.addEventListener('load', function(){
         }
     });
 
+    // Recibe como parametro los datos que el usuario ingreso, y los añade en el localStorage
     function agregarRegistro(nombre, apellido, genero, tipoU, usuario, clave){
         var contador = 0;
         do{

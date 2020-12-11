@@ -30,22 +30,24 @@
                 Acaba de ingresar al usuario de administrador.
             </p>
             
-                <table style="width:70%" class="tablaRegistros" id="tablaRegistros">
-                    <tbody id="tbody">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Usuario</th>
-                            <th>Genero</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </tbody>
-              </table>
+            <table style="width:70%" class="tablaRegistros" id="tablaRegistros">
+                <tbody id="tbody">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Usuario</th>
+                        <th>Genero</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <script>
 
+            // Obtiene por parametro la llave del usuario que se desea eliminar, y lo utiliza para removerlo 
+            // del localStorage
             function eliminar(element){
                 var nombre = localStorage.removeItem('Nombre' + element);
                 var apellido = localStorage.removeItem('Apellido' + element);
@@ -59,6 +61,8 @@
 
             }
 
+            // Almacena en el localStorage los datos del usuario que se desea editar con la llave "editar" + tipo 
+            // dato. Con esta información, se trabaja en el archivo editarUsuario.
             function editar(element){
                 var nombre = localStorage.getItem('Nombre' + element);
                 var apellido = localStorage.getItem('Apellido' + element);
@@ -76,7 +80,6 @@
 
                 window.location.href="editarUsuario.html";
             }
-
         </script>
     </body>
 </html>

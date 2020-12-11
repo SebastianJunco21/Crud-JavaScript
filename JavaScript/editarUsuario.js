@@ -19,6 +19,8 @@ function validarTipoUsuario(){
 validarTipoUsuario();
 
 window.addEventListener('load', function(){
+    // Obtiene los datos del localStorage que tiene la llave editar + el tipo de dato y si todas las llaves
+    // tienen un valor, invoca el metodo getModel para iniciar con la edicion del metodo
     function setModel(){
         var nombre = localStorage.getItem('editarUsuario');
         var apellido = localStorage.getItem('editarApellido');
@@ -32,6 +34,8 @@ window.addEventListener('load', function(){
         }
     }
 
+    // Obtiene los datos del usuario que se desea editar por medio del localStorage, para lograr colocar el
+    // modelo en los campos correspondientes
     function getModel(){
         var nombre = localStorage.getItem('editarNombre');
         var apellido = localStorage.getItem('editarApellido');
@@ -58,9 +62,11 @@ window.addEventListener('load', function(){
         document.getElementById('clave').value = clave;
         document.getElementById('confirmarClave').value = clave;
         document.getElementById('tipoUsuario').value = tipoUsuario;
-
     }
 
+    // indentifica la llave que posee el usuario a editar y se lo envia como parametro al metodo deleteOldRecord
+    // Obtiene los valores de los nuevos datos y se los pasa como parametro al metodo validarInfo para continuar
+    // con su validacion
     function editUser(){
         var btnEditar = document.getElementById('btnEditar');
 
@@ -102,10 +108,11 @@ window.addEventListener('load', function(){
             }
             
             validarInfo(nombre, apellido, genero, tipoU, usuario, confirmarClave, clave);
-            
         });
     }
 
+    // Recide como parametro la informacion que el usuario ingreso, y la verifica que todos los campos esten 
+    // diligenciados, y que las contraselas coinsidan.
     function validarInfo(nombre, apellido, genero, tipoU, usuario, confirmarClave, clave){
         if(nombre.value == "" || apellido.value == "" || usuario.value == "" || clave.value == "" || confirmarClave.value == ""){
             alert('Por favor verifique la información diligenciada');
@@ -119,6 +126,8 @@ window.addEventListener('load', function(){
         }
     }
 
+    // Recibe como parametro los nuevos datos que se deben almacenar en el localStorage, los almacena, muestra
+    // una alerta en donde informa que el usuario fue modificado y redirige al usuario a la vista de administrador
     function agregarRegistro(nombre, apellido, genero, tipoU, usuario, clave){
         let contador = 0;
         do{
@@ -138,6 +147,9 @@ window.addEventListener('load', function(){
         window.location.href="administrador.html";
     }
 
+    // Obtiene el parametro contrador del metodo editUser y del evento de guardar en la vista de editar usuario
+    // con el dato que recibe elimina la anterior informacion del usuario que se esta editando, y ademas se eliminan
+    // los datos con la llave "editar", que se utilizo para obtener el modelo.
     function deleteOldRecord(contador){
         localStorage.removeItem('Nombre' + contador);
         localStorage.removeItem('Apellido' + contador);
