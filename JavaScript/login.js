@@ -55,7 +55,14 @@ window.addEventListener('load', function(){
             var validarClave = localStorage.getItem("Clave" + segundoContador);
 
         }while(validarUsuario != inputUsuario.value && validarClave != inputContraseña.value && segundoContador <= primerContador)
+        
+        redireccionamiento(validarUsuario, inputUsuario, validarClave, inputContraseña, segundoContador, primerContador);
+        
+    }
 
+    // redirige a los usuarios dependiendo de sus credenciales, hacia la vista administracod o usuario.
+    // Obtiene los parametros necesarios del metodo validarDatos.
+    function redireccionamiento(validarUsuario, inputUsuario, validarClave, inputContraseña, segundoContador, primerContador){
         if(validarUsuario != null && validarClave != null && validarUsuario == inputUsuario.value && validarClave == inputContraseña.value){
             const tipoUsuario = localStorage.getItem('Tipo Usuario' + segundoContador);
             if(tipoUsuario == "Administrador"){

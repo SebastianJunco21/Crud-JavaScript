@@ -19,6 +19,20 @@ function validarTipoUsuario(){
 validarTipoUsuario();
 
 window.addEventListener('load', function(){
+
+    // Obtiene la información que el usuario diligencio en el formulario
+    function getData(){
+        var nombre = document.getElementById('nombre');
+        var apellido = document.getElementById('apellido');
+        var usuario = document.getElementById('usuario');
+        var dropdawngene = document.getElementById('genero');
+        var dropdawnTipoU = document.getElementById('tipoUsuario');
+        var clave = document.getElementById('clave');
+        var confirmarClave = document.getElementById('confirmarClave');
+
+        editUser(nombre, apellido, usuario, dropdawngene, dropdawnTipoU, clave, confirmarClave)
+    }
+
     // Obtiene los datos del localStorage que tiene la llave editar + el tipo de dato y si todas las llaves
     // tienen un valor, invoca el metodo getModel para iniciar con la edicion del metodo
     function setModel(){
@@ -49,6 +63,7 @@ window.addEventListener('load', function(){
         }else{
             genero = 2;
         }
+        
         if(tipoUsuario == "Administrador"){
             tipoUsuario = 1;
         }else{
@@ -67,10 +82,9 @@ window.addEventListener('load', function(){
     // indentifica la llave que posee el usuario a editar y se lo envia como parametro al metodo deleteOldRecord
     // Obtiene los valores de los nuevos datos y se los pasa como parametro al metodo validarInfo para continuar
     // con su validacion
-    function editUser(){
-        var btnEditar = document.getElementById('btnEditar');
-
-        btnEditar.addEventListener('click', function(){
+    function editUser(nombre, apellido, usuario, dropdawngene, dropdawnTipoU, clave, confirmarClave){
+        
+        document.getElementById('btnEditar').addEventListener('click', function(){
             let contador = 0;
             var nombreVolatil = localStorage.getItem('editarNombre');
             do{
@@ -81,32 +95,9 @@ window.addEventListener('load', function(){
 
             deleteOldRecord(contador);
 
-            var nombre = document.getElementById('nombre');
-            var apellido = document.getElementById('apellido');
-            var usuario = document.getElementById('usuario');
-            var dropdawngene = document.getElementById('genero');
-            var dropdawnTipoU = document.getElementById('tipoUsuario');
-            var clave = document.getElementById('clave');
-            var confirmarClave = document.getElementById('confirmarClave');
+            const genero = dropdawngene.options[dropdawngene.selectedIndex].text;
+            const tipoU = dropdawnTipoU.options[dropdawnTipoU.selectedIndex].text;
 
-            switch(dropdawngene.value){
-                case '1':
-                    var genero = 'Masculino';
-                break;
-                case '2':
-                    var genero = 'Femenino';
-                break;
-            }
-    
-            switch(dropdawnTipoU.value){
-                case '1':
-                    var tipoU = 'Administrador';
-                break;
-                case '2':
-                    var tipoU = 'Usuario';
-                break;
-            }
-            
             validarInfo(nombre, apellido, genero, tipoU, usuario, confirmarClave, clave);
         });
     }
@@ -166,6 +157,6 @@ window.addEventListener('load', function(){
         localStorage.removeItem('editarTipoUsuario');
     }
 
-    editUser();
+    getData();
     setModel();
 });

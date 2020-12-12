@@ -20,48 +20,44 @@ validarTipoUsuario();
 
 window.addEventListener('load', function(){
 
-    let nombre = document.getElementById('nombre');
-    let apellido = document.getElementById('apellido');
-    let usuario = document.getElementById('usuario');
-    let dropdawngene = document.getElementById('genero');
-    let dropdawnTipoU = document.getElementById('tipoUsuario');
-    let clave = document.getElementById('clave');
-    let confirmarClave = document.getElementById('confirmarClave');
-    const btnCrear = document.getElementById('btnCrear');
+    // Obtiene los campos del formulario de crear usuario
+    function obtenerCampos(){
+        const nombre = document.getElementById('nombre');
+        const apellido = document.getElementById('apellido');
+        const usuario = document.getElementById('usuario');
+        const dropdawngene = document.getElementById('genero');
+        const dropdawnTipoU = document.getElementById('tipoUsuario');
+        const clave = document.getElementById('clave');
+        const confirmarClave = document.getElementById('confirmarClave');
+        const btnCrear = document.getElementById('btnCrear');
 
-    // identifica la informacion que el usuario añadio en los dropdown y valida la informacion que el usuario ingreso
-    // para posteriormente enviarle los datos del usuario al metodo agregarRegistro para que este lo añada en el
-    // localSrotage
-    btnCrear.addEventListener('click', function(){
-        switch(dropdawngene.value){
-            case '1':
-                var genero = 'Masculino';
-            break;
-            case '2':
-                var genero = 'Femenino';
-            break;
-        }
+        createUser(nombre, apellido, usuario, dropdawngene, dropdawnTipoU, clave, confirmarClave, btnCrear);
+    }
 
-        switch(dropdawnTipoU.value){
-            case '1':
-                var tipoU = 'Administrador';
-            break;
-            case '2':
-                var tipoU = 'Usuario';
-            break;
-        }
+    // Me permite crear los usuarios con los datos que el usuario diligencio en el formulario de crear usuario
+    // obtiene los parametros del metodo obtenerCampos, trae todos los campos mas el boton para activar toda la
+    // funcionalidad
+    function createUser(nombre, apellido, usuario, dropdawngene, dropdawnTipoU, clave, confirmarClave, btnCrear){
         
-        if(nombre.value == "" || apellido.value == "" || usuario.value == "" || clave.value == "" || confirmarClave.value == ""){
-            alert('Por favor verifique la información diligenciada');
+        // identifica la informacion que el usuario añadio en los dropdown y valida la informacion que el usuario ingreso
+        // para posteriormente enviarle los datos del usuario al metodo agregarRegistro para que este lo añada en el
+        // localSrotage
+        btnCrear.addEventListener('click', function(){
+            const genero = dropdawngene.options[dropdawngene.selectedIndex].text;
+            const tipoU = dropdawnTipoU.options[dropdawnTipoU.selectedIndex].text;
+            
+            if(nombre.value == "" || apellido.value == "" || usuario.value == "" || clave.value == "" || confirmarClave.value == ""){
+                alert('Por favor verifique la información diligenciada');
 
-        }else if(clave.value != confirmarClave.value){
-            alert('Por favor verifique la contraseña');
+            }else if(clave.value != confirmarClave.value){
+                alert('Por favor verifique la contraseña');
 
-        }else{
-            agregarRegistro(nombre.value, apellido.value, genero, tipoU, usuario.value, clave.value)
+            }else{
+                agregarRegistro(nombre.value, apellido.value, genero, tipoU, usuario.value, clave.value)
 
-        }
-    });
+            }
+        });
+    }
 
     // Recibe como parametro los datos que el usuario ingreso, y los añade en el localStorage
     function agregarRegistro(nombre, apellido, genero, tipoU, usuario, clave){
@@ -83,4 +79,5 @@ window.addEventListener('load', function(){
         window.location.href="administrador.html";
     }
 
+    obtenerCampos();
 });
