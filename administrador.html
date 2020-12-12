@@ -49,16 +49,22 @@
             // Obtiene por parametro la llave del usuario que se desea eliminar, y lo utiliza para removerlo 
             // del localStorage
             function eliminar(element){
-                var nombre = localStorage.removeItem('Nombre' + element);
-                var apellido = localStorage.removeItem('Apellido' + element);
-                var genero = localStorage.removeItem('Genero' + element);
-                var usuario = localStorage.removeItem('Usuario' + element);
-                var contraseña = localStorage.removeItem('Clave' + element);
-                var tipoUsuario = localStorage.removeItem('Tipo Usuario' + element);
 
-                alert('Usuario eliminado con exito');
-                location.reload();
+                var comprobacion = confirm("¿Desea eliminar este usuario?");
+                    if (comprobacion) {
+                        var nombre = localStorage.removeItem('Nombre' + element);
+                        var apellido = localStorage.removeItem('Apellido' + element);
+                        var genero = localStorage.removeItem('Genero' + element);
+                        var usuario = localStorage.removeItem('Usuario' + element);
+                        var contraseña = localStorage.removeItem('Clave' + element);
+                        var tipoUsuario = localStorage.removeItem('Tipo Usuario' + element);
 
+                        alert('Usuario eliminado con exito');
+                        location.reload();
+                    }
+                    else {
+                        alert("Ha deneado la eliminación de este usuario");
+                    }
             }
 
             // Almacena en el localStorage los datos del usuario que se desea editar con la llave "editar" + tipo 
