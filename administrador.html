@@ -51,32 +51,35 @@
             // del localStorage
             function eliminar(element){
 
-                var comprobacion = confirm("¿Desea eliminar este usuario?");
-                    if (comprobacion) {
-                        var nombre = localStorage.removeItem('Nombre' + element);
-                        var apellido = localStorage.removeItem('Apellido' + element);
-                        var genero = localStorage.removeItem('Genero' + element);
-                        var usuario = localStorage.removeItem('Usuario' + element);
-                        var contraseña = localStorage.removeItem('Clave' + element);
-                        var tipoUsuario = localStorage.removeItem('Tipo Usuario' + element);
+                var comprobacion = confirm("Seguro que desea eliminar el usuario " + localStorage.getItem('Usuario' + element));
+                    
+                if (comprobacion) {
+                    localStorage.removeItem('Nombre' + element);
+                    localStorage.removeItem('Apellido' + element);
+                    localStorage.removeItem('Genero' + element);
+                    localStorage.removeItem('Usuario' + element);
+                    localStorage.removeItem('Clave' + element);
+                    localStorage.removeItem('Tipo Usuario' + element);
 
-                        alert('Usuario eliminado con exito');
-                        location.reload();
-                    }
-                    else {
-                        alert("Ha deneado la eliminación de este usuario");
-                    }
+                    localStorage.setItem('Dato Eliminado', element);
+
+                    alert('Usuario eliminado con exito');
+                    location.reload();
+                }
+                else {
+                    alert("Ha deneado la eliminación de este usuario");
+                }
             }
 
             // Almacena en el localStorage los datos del usuario que se desea editar con la llave "editar" + tipo 
             // dato. Con esta información, se trabaja en el archivo editarUsuario.
             function editar(element){
-                var nombre = localStorage.getItem('Nombre' + element);
-                var apellido = localStorage.getItem('Apellido' + element);
-                var genero = localStorage.getItem('Genero' + element);
-                var usuario = localStorage.getItem('Usuario' + element);
-                var contraseña = localStorage.getItem('Clave' + element);
-                var tipoUsuario = localStorage.getItem('Tipo Usuario' + element);
+                let nombre = localStorage.getItem('Nombre' + element);
+                let apellido = localStorage.getItem('Apellido' + element);
+                let genero = localStorage.getItem('Genero' + element);
+                let usuario = localStorage.getItem('Usuario' + element);
+                let contraseña = localStorage.getItem('Clave' + element);
+                let tipoUsuario = localStorage.getItem('Tipo Usuario' + element);
 
                 localStorage.setItem('editarNombre', nombre);
                 localStorage.setItem('editarApellido', apellido);

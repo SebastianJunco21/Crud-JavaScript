@@ -23,30 +23,27 @@ window.addEventListener('load', function(){
     // determina la cantidad de usuario que se encuentran registrados en el localStorage para seleccionar
     // la informacion necesaria y rellenar la tabla de la vista de administracion
     function añadirTextoTabla(){
-        var contador = 0;
-        do{
-            contador++;
-            var buscarLlave = localStorage.getItem("Usuario" + contador);
-    
-        }while(buscarLlave != null)
-    
-        var tbody = document.getElementById('tbody');
-        var name = 0;
+        const cantUsuarios = Math.round(localStorage.length/7)+1;
 
-        for(var i = 1; i <= contador-1; i++){
-            var hilera = document.createElement("tr");
+        let tbody = document.getElementById('tbody');
+        let name = 0;
 
-            var nombre = localStorage.getItem("Nombre" + i);
-            var apellido = localStorage.getItem("Apellido" + i);
-            var usuario = localStorage.getItem("Usuario" + i);
-            var genero = localStorage.getItem("Genero" + i);
-            ++name;
+        for(let i = 1; i <= cantUsuarios; i++){
 
-            GenerarTextoTabla(nombre, apellido, usuario, genero, hilera);
+            var verifExistencia = localStorage.getItem('Usuario' + i);
+            if(verifExistencia != void 0 && verifExistencia != ""){
+                const hilera = document.createElement("tr");
 
-            generarImgTabla(hilera, name);
+                let nombre = localStorage.getItem("Nombre" + i);
+                let apellido = localStorage.getItem("Apellido" + i);
+                let usuario = localStorage.getItem("Usuario" + i);
+                let genero = localStorage.getItem("Genero" + i);
+                ++name;
 
-            tbody.appendChild(hilera);
+                GenerarTextoTabla(nombre, apellido, usuario, genero, hilera);
+                generarImgTabla(hilera, name);
+                tbody.appendChild(hilera);
+            }
         }
     }
 
@@ -80,7 +77,6 @@ window.addEventListener('load', function(){
         etiquetaEditar.setAttribute("src", "Imagenes/Editar.svg");
         etiquetaEditar.setAttribute("class", "btnEditar");
         etiquetaEditar.setAttribute("onclick", "editar(" + name + ")");
-        etiquetaEditar.setAttribute("name", name);
         celda.prepend(etiquetaEditar);
         hilera.appendChild(celda);
 
@@ -89,12 +85,12 @@ window.addEventListener('load', function(){
         etiquetaEliminar.setAttribute("src", "Imagenes/Eliminar.png");
         etiquetaEliminar.setAttribute("class", "btnEliminar");
         etiquetaEliminar.setAttribute("onclick", "eliminar(" + name + ")");
-        etiquetaEliminar.setAttribute("name", name);
         celda.prepend(etiquetaEliminar);
         hilera.appendChild(celda);
 
     }
 
+    // cantidadUsuarios();
     añadirTextoTabla();
 
 });
