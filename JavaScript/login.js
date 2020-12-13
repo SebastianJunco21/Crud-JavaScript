@@ -84,10 +84,12 @@ window.addEventListener('load', function(){
         const getUser = localStorage.getItem('Usuario' + identificador);
         const getPassword = localStorage.getItem('Clave' + identificador);
         const getTipoUsuario = localStorage.getItem('Tipo Usuario' + identificador);
+        const getGenero = localStorage.getItem('Genero' + identificador);
 
         localStorage.setItem('loginUsuario', getUser);
         localStorage.setItem('loginClave', getPassword);
         localStorage.setItem('loginTipoUsuario', getTipoUsuario);
+        localStorage.setItem('loginGenero', getGenero);
     }
 
     login();

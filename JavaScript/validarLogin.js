@@ -22,6 +22,26 @@ window.addEventListener('load', function(){
         localStorage.removeItem('loginUsuario');
         localStorage.removeItem('loginClave');
         localStorage.removeItem('loginTipoUsuario');
+        localStorage.removeItem('loginGenero');
         window.location.href="login.html";
     });
+
+    function asignarImgGenero(){
+        var elementHTML = document.getElementById('imgUsuario');
+        var genero = localStorage.getItem('loginGenero');
+        var usuario = localStorage.getItem('loginUsuario');
+
+        if(genero == "Masculino"){
+            elementHTML.setAttribute("src", "Imagenes/hombre.png");
+
+        } else if(genero == "Femenino") {
+            elementHTML.setAttribute("src", "Imagenes/mujer.jpg");
+
+        } else {
+            elementHTML.setAttribute("src", "Imagenes/hombre.png");
+            alert("Por favor valide al informacion del usuario " + usuario + " ya que no cuenta con la totalidad de su información.");
+        }
+    }
+    
+    asignarImgGenero();
 });
